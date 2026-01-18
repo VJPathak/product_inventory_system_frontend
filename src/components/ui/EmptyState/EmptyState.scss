@@ -1,0 +1,42 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.empty-state {
+  @include flex-column;
+  align-items: center;
+  text-align: center;
+  padding: $spacing-2xl $spacing-lg;
+
+  &__icon {
+    @include flex-center;
+    width: 64px;
+    height: 64px;
+    margin-bottom: $spacing-lg;
+    background: $gray-100;
+    border-radius: $radius-full;
+    color: $text-muted;
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $text-primary;
+    margin: 0 0 $spacing-sm;
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    margin: 0 0 $spacing-lg;
+    max-width: 360px;
+  }
+
+  &__action {
+    margin-top: $spacing-sm;
+  }
+}

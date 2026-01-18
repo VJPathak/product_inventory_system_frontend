@@ -1,0 +1,45 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.textarea-wrapper {
+  @include flex-column;
+  gap: $spacing-xs;
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-primary;
+  }
+
+  &__required {
+    color: $error-500;
+    margin-left: 2px;
+  }
+
+  &__textarea {
+    @include input-base;
+    min-height: 100px;
+    resize: vertical;
+
+    &--error {
+      border-color: $error-500;
+
+      &:focus {
+        border-color: $error-500;
+        box-shadow: 0 0 0 3px $error-50;
+      }
+    }
+  }
+
+  &__error {
+    font-size: $font-size-xs;
+    color: $error-500;
+    margin: 0;
+  }
+
+  &__helper {
+    font-size: $font-size-xs;
+    color: $text-muted;
+    margin: 0;
+  }
+}

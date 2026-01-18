@@ -1,0 +1,98 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.btn {
+  @include button-base;
+
+  // Variants
+  &--primary {
+    background: $primary-600;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background: $primary-700;
+    }
+
+    &:active:not(:disabled) {
+      background: $primary-800;
+    }
+  }
+
+  &--secondary {
+    background: $surface;
+    color: $text-primary;
+    border: 1px solid $border-color;
+
+    &:hover:not(:disabled) {
+      background: $gray-50;
+      border-color: $border-hover;
+    }
+
+    &:active:not(:disabled) {
+      background: $gray-100;
+    }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $text-secondary;
+
+    &:hover:not(:disabled) {
+      background: $gray-100;
+      color: $text-primary;
+    }
+
+    &:active:not(:disabled) {
+      background: $gray-200;
+    }
+  }
+
+  &--danger {
+    background: $error-500;
+    color: white;
+
+    &:hover:not(:disabled) {
+      background: hsl(0, 70%, 48%);
+    }
+
+    &:active:not(:disabled) {
+      background: hsl(0, 70%, 42%);
+    }
+  }
+
+  // Sizes
+  &--sm {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-xs;
+  }
+
+  &--md {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+  }
+
+  &--lg {
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-base;
+  }
+
+  // Spinner
+  &__spinner {
+    display: inline-flex;
+    animation: spin 1s linear infinite;
+
+    svg {
+      width: 1em;
+      height: 1em;
+    }
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

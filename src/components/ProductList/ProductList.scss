@@ -1,0 +1,51 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.product-list {
+  &__grid {
+    display: grid;
+    gap: $spacing-md;
+    grid-template-columns: 1fr;
+
+    @include tablet-up {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__loading {
+    @include flex-column;
+    align-items: center;
+    gap: $spacing-md;
+    padding: $spacing-2xl;
+    color: $text-secondary;
+  }
+
+  &__error {
+    padding: $spacing-lg;
+  }
+
+  &__delete-modal {
+    @include flex-column;
+    gap: $spacing-lg;
+
+    p {
+      color: $text-secondary;
+      line-height: $line-height-relaxed;
+      margin: 0;
+
+      strong {
+        color: $text-primary;
+      }
+    }
+  }
+
+  &__delete-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-md;
+  }
+}

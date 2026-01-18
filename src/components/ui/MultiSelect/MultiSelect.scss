@@ -1,0 +1,182 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.multi-select {
+  position: relative;
+  @include flex-column;
+  gap: $spacing-xs;
+
+  &__label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: $text-primary;
+  }
+
+  &__required {
+    color: $error-500;
+    margin-left: 2px;
+  }
+
+  &__control {
+    @include flex-between;
+    min-height: 42px;
+    padding: $spacing-sm;
+    padding-right: $spacing-md;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    background: $surface;
+    cursor: pointer;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+
+    &:hover:not(.multi-select__control--disabled) {
+      border-color: $border-hover;
+    }
+
+    &--open {
+      border-color: $primary-500;
+      box-shadow: 0 0 0 3px $primary-100;
+    }
+
+    &--error {
+      border-color: $error-500;
+
+      &.multi-select__control--open {
+        box-shadow: 0 0 0 3px $error-50;
+      }
+    }
+
+    &--disabled {
+      background: $gray-100;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+  }
+
+  &__value {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__placeholder {
+    color: $text-muted;
+    font-size: $font-size-sm;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+  }
+
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: 2px 6px;
+    padding-right: 4px;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    background: $primary-100;
+    color: $primary-700;
+    border-radius: $radius-sm;
+  }
+
+  &__tag-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: $primary-600;
+    cursor: pointer;
+    border-radius: $radius-sm;
+    font-size: 14px;
+    line-height: 1;
+
+    &:hover {
+      background: $primary-200;
+    }
+  }
+
+  &__arrow {
+    color: $text-muted;
+    transition: transform $transition-fast;
+
+    .multi-select__control--open & {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: $z-dropdown;
+    margin-top: $spacing-xs;
+    padding: $spacing-xs;
+    background: $surface;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    box-shadow: $shadow-lg;
+    list-style: none;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+
+    &:hover:not(.multi-select__option--empty) {
+      background: $gray-100;
+    }
+
+    &--selected {
+      background: $primary-50;
+      color: $primary-700;
+
+      &:hover {
+        background: $primary-100;
+      }
+    }
+
+    &--empty {
+      color: $text-muted;
+      cursor: default;
+      justify-content: center;
+    }
+  }
+
+  &__checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border: 1px solid $border-color;
+    border-radius: $radius-sm;
+    background: $surface;
+
+    .multi-select__option--selected & {
+      background: $primary-600;
+      border-color: $primary-600;
+      color: white;
+    }
+  }
+
+  &__error {
+    font-size: $font-size-xs;
+    color: $error-500;
+    margin: 0;
+  }
+}

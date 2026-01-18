@@ -1,0 +1,93 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: $z-modal;
+  @include flex-center;
+  background: hsla(220, 20%, 12%, 0.5);
+  backdrop-filter: blur(4px);
+  padding: $spacing-md;
+  animation: fadeIn 150ms ease-out;
+}
+
+.modal {
+  @include card;
+  max-height: calc(100vh - #{$spacing-xl * 2});
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: scaleIn 200ms ease-out;
+
+  &--sm {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  &--md {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  &--lg {
+    width: 100%;
+    max-width: 720px;
+  }
+
+  &__header {
+    @include flex-between;
+    padding: $spacing-lg;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $text-primary;
+    margin: 0;
+  }
+
+  &__close {
+    @include flex-center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: $text-muted;
+    cursor: pointer;
+    border-radius: $radius-md;
+    transition: background-color $transition-fast, color $transition-fast;
+
+    &:hover {
+      background: $gray-100;
+      color: $text-primary;
+    }
+  }
+
+  &__content {
+    padding: $spacing-lg;
+    overflow-y: auto;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

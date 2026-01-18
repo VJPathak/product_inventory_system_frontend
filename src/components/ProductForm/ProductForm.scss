@@ -1,0 +1,16 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.product-form {
+  @include flex-column;
+  gap: $spacing-lg;
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-md;
+    margin-top: $spacing-sm;
+    padding-top: $spacing-lg;
+    border-top: 1px solid $border-color;
+  }
+}

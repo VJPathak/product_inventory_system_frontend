@@ -1,0 +1,34 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.inventory-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    flex: 1;
+    padding: $spacing-lg 0;
+
+    @include tablet-up {
+      padding: $spacing-xl 0;
+    }
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    @include flex-column;
+    gap: $spacing-lg;
+
+    @include tablet-up {
+      padding: 0 $spacing-xl;
+      gap: $spacing-xl;
+    }
+  }
+
+  &__products {
+    min-height: 400px;
+  }
+}
